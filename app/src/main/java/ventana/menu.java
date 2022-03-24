@@ -3,18 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/Application.java to edit this template
  */
 package ventana;
-
+import database.creationDB;
 /**
  *
  * @author anlle
  */
 public class menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewApplication
-     */
+    creationDB db = new creationDB();
+    
     public menu() {
         initComponents();
+        db.conectar();
     }
 
     /**
