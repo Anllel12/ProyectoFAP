@@ -25,13 +25,13 @@ public class creationDB {
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.getApplicationDefault())
                     .setDatabaseUrl("https://proyectofap-12da6.firebaseio.com/")
-                    .build();
-            
+                    .build();          
             FirebaseApp.initializeApp(options);
             
             db = FirestoreClient.getFirestore();
+            System.out.println("Hola");
         }
-        catch(Exception e){}
+        catch(Exception e){System.out.println("F");}
     }
     public static void insert(){
         try{
@@ -47,6 +47,10 @@ public class creationDB {
             // result.get() blocks on response
             System.out.println("Update time : " + result.get().getUpdateTime());
         }
-        catch(Exception e){}
+        catch(Exception e){System.out.println("Puto");}
+    }
+    public static void main(String[] args) {
+        conectar();
+        insert();
     }
 }

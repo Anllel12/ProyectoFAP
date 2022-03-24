@@ -22,7 +22,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'ProyectoFAP.App'
+    mainClass = 'database.creationDB'
 }
 
 tasks.named('test') {
