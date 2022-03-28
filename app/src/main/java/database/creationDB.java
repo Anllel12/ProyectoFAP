@@ -5,7 +5,6 @@
 package database;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
@@ -20,7 +19,9 @@ import java.util.Map;
  * @author anlle
  */
 public class creationDB {
-    static Firestore db;
+    
+    static Firestore bd;
+    
     public static void conectar(){
         try{
             
@@ -32,22 +33,23 @@ public class creationDB {
                     .build();
             
             FirebaseApp.initializeApp(options);
+            bd = FirestoreClient.getFirestore();
             
             System.out.println("Hola");
         }
-        catch(Exception e){System.out.println("F");}
+        catch(Exception e){System.out.println(e);}
     }
-    public static boolean insert(String coleccion, String id, Map data){
- 
+    public static void insert(){
         try{
-            DocumentReference docRef = db.collection(coleccion).document(id);
-            ApiFuture<WriteResult> result = docRef.set(data);
-            System.out.println("Update time : " + result.get().getUpdateTime());
-            
-            return true;
+            // Add document data with an additional field ("middle")
+            Map<String, Object> data = new HashMap<>();
+            data.put("first", "Alan");
+            data.put("middle", "Mathison");
+            data.put("last", "Turing");
+
+            ApiFuture<WriteResult> future = bd.collection("nombres").document("principio").set(data);
+            System.out.println("Update time : " + future.get().getUpdateTime());
         }
-        catch(Exception e){System.out.println("Puto");}
-        
-        return false;
+        catch(Exception e){System.out.println(e);}
     }
 }
