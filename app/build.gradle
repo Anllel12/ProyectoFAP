@@ -22,7 +22,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'database.creationDB'
+    mainClass = 'ventana.menu'
 }
 
 tasks.named('test') {

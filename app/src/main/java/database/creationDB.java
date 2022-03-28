@@ -11,6 +11,7 @@ import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,35 +23,31 @@ public class creationDB {
     static Firestore db;
     public static void conectar(){
         try{
+            
+            FileInputStream refreshToken = new FileInputStream("proyectofap.json");
+            
             FirebaseOptions options = FirebaseOptions.builder()
-                    .setCredentials(GoogleCredentials.getApplicationDefault())
+                    .setCredentials(GoogleCredentials.fromStream(refreshToken))
                     .setDatabaseUrl("https://proyectofap-12da6.firebaseio.com/")
-                    .build();          
+                    .build();
+            
             FirebaseApp.initializeApp(options);
             
-            db = FirestoreClient.getFirestore();
             System.out.println("Hola");
         }
         catch(Exception e){System.out.println("F");}
     }
-    public static void insert(){
+    public static boolean insert(String coleccion, String id, Map data){
+ 
         try{
-            DocumentReference docRef = db.collection("users").document("alovelace");
-            // Add document data  with id "alovelace" using a hashmap
-            Map<String, Object> data = new HashMap<>();
-            data.put("first", "Ada");
-            data.put("last", "Lovelace");
-            data.put("born", 1815);
-            //asynchronously write data
+            DocumentReference docRef = db.collection(coleccion).document(id);
             ApiFuture<WriteResult> result = docRef.set(data);
-            // ...
-            // result.get() blocks on response
             System.out.println("Update time : " + result.get().getUpdateTime());
+            
+            return true;
         }
         catch(Exception e){System.out.println("Puto");}
-    }
-    public static void main(String[] args) {
-        conectar();
-        insert();
+        
+        return false;
     }
 }
