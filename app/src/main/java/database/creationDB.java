@@ -6,12 +6,15 @@ package database;
 import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.QueryDocumentSnapshot;
+import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import java.io.FileInputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -39,16 +42,25 @@ public class creationDB {
         }
         catch(Exception e){System.out.println(e);}
     }
-    public static void insert(){
+    
+    public static void insert(String id, Map data){
         try{
-            // Add document data with an additional field ("middle")
-            Map<String, Object> data = new HashMap<>();
-            data.put("first", "Alan");
-            data.put("middle", "Mathison");
-            data.put("last", "Turing");
-
-            ApiFuture<WriteResult> future = bd.collection("nombres").document("principio").set(data);
+            
+            ApiFuture<WriteResult> future = bd.collection("nombres").document(id).set(data);
             System.out.println("Update time : " + future.get().getUpdateTime());
+        }
+        catch(Exception e){System.out.println(e);}
+    }
+    
+    public static void read(){
+        try{
+            // asynchronously retrieve all documents
+            ApiFuture<QuerySnapshot> future = bd.collection("nombres").get();
+            // future.get() blocks on response
+            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+            for (QueryDocumentSnapshot document : documents) {
+                System.out.println(document.getId() + " => " + document.getReference().getId());
+            }
         }
         catch(Exception e){System.out.println(e);}
     }
