@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/Application.java to edit this template
  */
 package ventana;
+import database.Query;
 import database.creationDB;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import javax.swing.table.DefaultTableModel;
@@ -15,11 +17,12 @@ import org.conscrypt.ct.DigitallySigned;
 public class menu extends javax.swing.JFrame {
 
     creationDB db = new creationDB();
+    Query q = new Query();
     
     public menu() {
         initComponents();
         db.conectar();
-        db.read();
+        q.table(jTable1);
     }
 
     /**
@@ -113,15 +116,27 @@ public class menu extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Apellido", "Segundo Apellido", "Nombre"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -153,10 +168,9 @@ public class menu extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void showText(String[] columnsName){
+    public void showText(String[] columnsName, String[] rowsData){
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         model.setColumnIdentifiers(columnsName);
-        model.addRow(rowData);
     }
     
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -168,7 +182,7 @@ public class menu extends javax.swing.JFrame {
         data.put("apellido", apellido);
         data.put("segundoApellido", segundoApellido);
         String uuid = java.util.UUID.randomUUID().toString();
-        db.insert(uuid, data);
+        q.insert(uuid, data);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
@@ -222,5 +236,9 @@ public class menu extends javax.swing.JFrame {
     private javax.swing.JTextField jTextApellido2;
     private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
+
+    public void showText(ArrayList columns) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
 }
