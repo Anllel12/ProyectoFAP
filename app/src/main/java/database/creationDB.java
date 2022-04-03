@@ -1,6 +1,9 @@
 /*
 * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*
+* Clase la cual utilizaremos para conectarnos a la Base de Dato y proximamente su creación automatica
+*
 */
 package database;
 import com.google.auth.oauth2.GoogleCredentials;
@@ -19,12 +22,12 @@ public class creationDB {
     
     static menu m = new menu();
     
-    static Firestore bd;
+    static Firestore bd; // Referencia de la BBDD
     
     public static void conectar(){
         try{
             
-            FileInputStream refreshToken = new FileInputStream("proyectofap.json");
+            FileInputStream refreshToken = new FileInputStream("proyectofap.json"); // Credenciales para poder editar la BBDD
             
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(refreshToken))
