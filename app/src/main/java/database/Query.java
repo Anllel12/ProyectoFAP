@@ -22,10 +22,9 @@ public class Query {
     
     creationDB database = new creationDB();
     
-    public void insert(String id, Map data){
-        try{
-            
-            ApiFuture<WriteResult> future = database.bd.collection("nombres").document(id).set(data);
+    public void insert(String id, Map data, String coleccion){
+        try{          
+            ApiFuture<WriteResult> future = database.bd.collection(coleccion).document(id).set(data);
             System.out.println("Update time : " + future.get().getUpdateTime());
         }
         catch(Exception e){System.out.println(e);}
@@ -39,7 +38,7 @@ public class Query {
             List<QueryDocumentSnapshot> documents = future.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
                 DefaultTableModel model = (DefaultTableModel) table.getModel(); // añade filas a la tabla automaticamente
-                model.addRow(new Object[]{document.getData().get("nombre"), document.getData().get("cantidad").toString(), document.getData().get("unidad")});
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("cantidad").toString(), document.getData().get("unidad")});
             }
         }
         catch(Exception e){System.out.println(e);}

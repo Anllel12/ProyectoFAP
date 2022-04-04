@@ -5,7 +5,7 @@
 package ventana;
 import database.Query;
 import database.creationDB;
-import java.util.ArrayList;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author anlle
@@ -14,6 +14,7 @@ public class menu extends javax.swing.JFrame {
 
     creationDB db = new creationDB();
     Query q = new Query();
+    AddStock addStock = new AddStock(this);
     
     public menu() {
         initComponents();
@@ -52,11 +53,11 @@ public class menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nombre", "Cantidad", "Unidad"
+                "ID", "Nombre", "Cantidad", "Unidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -66,6 +67,11 @@ public class menu extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jTableStock);
 
         jButtonAdd.setText("Añadir");
+        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddActionPerformed(evt);
+            }
+        });
 
         jButtonDelete.setText("Eliminar");
 
@@ -138,6 +144,16 @@ public class menu extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
+        addStock.setVisible(true);
+    }//GEN-LAST:event_jButtonAddActionPerformed
+    
+    public void updateTableStock(){ // actualizo la tabla
+        while(jTableStock.getRowCount() != 0) ((DefaultTableModel)jTableStock.getModel()).removeRow(0); // Eliminamos as columnas para que no se repitan los valores ya guardados
+        
+        q.tableStock(jTableStock);
+    }
     
     /**
      * @param args the command line arguments
