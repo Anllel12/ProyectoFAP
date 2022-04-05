@@ -37,6 +37,6 @@ public class creationDB {
             FirebaseApp.initializeApp(options);
             bd = FirestoreClient.getFirestore();
         }
-        catch(Exception e){System.out.println(e);}
+        catch(Exception e){System.out.println("Error al conectarse: " + e);}
     }
 }
