@@ -5,6 +5,8 @@
 package ventana;
 import database.Query;
 import database.creationDB;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 /**
  *
@@ -15,6 +17,10 @@ public class menu extends javax.swing.JFrame {
     creationDB db = new creationDB();
     Query q = new Query();
     AddStock addStock = new AddStock(this);
+    
+    String id = ""; // Valor para guardar el id pinchado en la tabla
+    int row = 0;
+    int col = 0;
     
     public menu() {
         initComponents();
@@ -57,11 +63,16 @@ public class menu extends javax.swing.JFrame {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        jTableStock.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableStockMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(jTableStock);
@@ -74,8 +85,18 @@ public class menu extends javax.swing.JFrame {
         });
 
         jButtonDelete.setText("Eliminar");
+        jButtonDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteActionPerformed(evt);
+            }
+        });
 
         jButtonEdit.setText("Editar");
+        jButtonEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,9 +169,30 @@ public class menu extends javax.swing.JFrame {
     private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddActionPerformed
         addStock.setVisible(true);
     }//GEN-LAST:event_jButtonAddActionPerformed
+
+    private void jTableStockMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableStockMouseClicked
+        JTable source = (JTable) evt.getSource();
+        row = source.rowAtPoint(evt.getPoint()); // Guardamos la fila para saber el id pinchado
+        col = source.columnAtPoint(evt.getPoint()); // Guardamos la columna
+        id = source.getModel().getValueAt(row, 0).toString();
+    }//GEN-LAST:event_jTableStockMouseClicked
+
+    private void jButtonDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteActionPerformed
+        q.delete("stock", id);
+        updateTableStock();
+    }//GEN-LAST:event_jButtonDeleteActionPerformed
+
+    private void jButtonEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditActionPerformed
+        if(jTableStock.isEditing()){ // comprueba si esta editando la tabla
+            JOptionPane.showMessageDialog(null, "Deje de editar el campo (Pulse ENTER para dejar de editar).", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            q.updateStock(col,id, ((DefaultTableModel)jTableStock.getModel()).getValueAt(row, col));
+        }
+    }//GEN-LAST:event_jButtonEditActionPerformed
     
     public void updateTableStock(){ // actualizo la tabla
-        while(jTableStock.getRowCount() != 0) ((DefaultTableModel)jTableStock.getModel()).removeRow(0); // Eliminamos as columnas para que no se repitan los valores ya guardados
+        while(jTableStock.getRowCount() != 0) ((DefaultTableModel)jTableStock.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
         
         q.tableStock(jTableStock);
     }
