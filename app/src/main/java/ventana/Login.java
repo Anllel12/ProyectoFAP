@@ -14,11 +14,11 @@ import java.util.Map;
  *
  * @author anlle
  */
-public class Register extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame {
 
     menu m;
     
-    public Register(menu _menu) {
+    public Loginter(menu _menu) {
         initComponents();
         m = _menu;
     }
@@ -36,13 +36,9 @@ public class Register extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextCorreo = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextNombre = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jTextApellidos = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        jTextContrasena = new javax.swing.JTextField();
         jButtonAceptar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jPasswordField2 = new javax.swing.JPasswordField();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -52,13 +48,7 @@ public class Register extends javax.swing.JFrame {
         jLabel1.setText("Correo:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel2.setText("Nombre:");
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Apellidos:");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Contraseña:");
+        jLabel2.setText("Contraseña:");
 
         jButtonAceptar.setText("Registrar");
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -68,7 +58,9 @@ public class Register extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
-        jLabel5.setText("Registro");
+        jLabel5.setText("Inicio Sesión");
+
+        jPasswordField2.setText("jPasswordField2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -82,34 +74,24 @@ public class Register extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1))
-                                .addGap(72, 72, 72)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3))
-                                .addGap(52, 52, 52)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1))
+                        .addGap(72, 72, 72)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                            .addComponent(jPasswordField2))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(111, 111, 111)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -117,16 +99,8 @@ public class Register extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                    .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(113, 113, 113)
                 .addComponent(jButtonAceptar)
                 .addContainerGap())
         );
@@ -137,8 +111,8 @@ public class Register extends javax.swing.JFrame {
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
         Map<String, Object> data = new HashMap<>();
         data.put("nombre", jTextNombre.getText());
-        data.put("apellido", Integer.parseInt(jTextApellidos.getText()));
-        data.put("contrase�a", jTextContrasena.getText());
+        data.put("apellido", Integer.parseInt(jTextCantidad.getText()));
+        data.put("contrase�a", jTextUnidad.getText());
         String uuid = jTextCorreo.getText();
         m.q.insert(uuid, data, "usuarios");
         m.updateTableStock();
@@ -148,13 +122,9 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAceptar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextApellidos;
-    private javax.swing.JTextField jTextContrasena;
+    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JTextField jTextCorreo;
-    private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
 }
