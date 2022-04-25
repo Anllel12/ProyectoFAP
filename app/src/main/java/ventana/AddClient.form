@@ -26,30 +26,19 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextId" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="jTextNombre" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTextCantidad" min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="jTextUnidad" min="-2" pref="100" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="142" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="jTextApellidosClient" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="jTextCorreoClient" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="jTextIdClient" min="-2" pref="100" max="-2" attributes="0"/>
+                  <Component id="jTextNombreClient" min="-2" pref="100" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="85" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -64,22 +53,22 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextId" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextIdClient" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextNombreClient" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextCantidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextApellidosClient" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextUnidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jTextCorreoClient" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="98" max="32767" attributes="0"/>
               <Component id="jButtonAceptar" min="-2" max="-2" attributes="0"/>
@@ -97,7 +86,7 @@
         <Property name="text" type="java.lang.String" value="ID"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextId">
+    <Component class="javax.swing.JTextField" name="jTextIdClient">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
@@ -107,27 +96,27 @@
         <Property name="text" type="java.lang.String" value="Nombre"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextNombre">
+    <Component class="javax.swing.JTextField" name="jTextNombreClient">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cantidad"/>
+        <Property name="text" type="java.lang.String" value="Apellidos"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextCantidad">
+    <Component class="javax.swing.JTextField" name="jTextApellidosClient">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Unidad"/>
+        <Property name="text" type="java.lang.String" value="Correo electronico"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextUnidad">
+    <Component class="javax.swing.JTextField" name="jTextCorreoClient">
     </Component>
     <Component class="javax.swing.JButton" name="jButtonAceptar">
       <Properties>
