@@ -55,6 +55,12 @@ public class menu extends javax.swing.JFrame {
         jButtonDeleteCient = new javax.swing.JButton();
         jButtonEditClient = new javax.swing.JButton();
         jButtonAddClient = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTableProvider = new javax.swing.JTable();
+        jButtonDeleteProvider = new javax.swing.JButton();
+        jButtonEditProvider = new javax.swing.JButton();
+        jButtonAddProvider = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableUser = new javax.swing.JTable();
@@ -214,6 +220,78 @@ public class menu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clientes", jPanel2);
 
+        jTableProvider.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Correo", "Nombre", "Telefono"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jTableProvider.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProviderMouseClicked(evt);
+            }
+        });
+        jScrollPane4.setViewportView(jTableProvider);
+
+        jButtonDeleteProvider.setText("Eliminar");
+        jButtonDeleteProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteProviderActionPerformed(evt);
+            }
+        });
+
+        jButtonEditProvider.setText("Editar");
+        jButtonEditProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditProviderActionPerformed(evt);
+            }
+        });
+
+        jButtonAddProvider.setText("Añadir");
+        jButtonAddProvider.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddProviderActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonDeleteProvider)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEditProvider)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAddProvider)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonDeleteProvider)
+                    .addComponent(jButtonEditProvider)
+                    .addComponent(jButtonAddProvider))
+                .addGap(0, 67, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Proveedores", jPanel4);
+
         jTableUser.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -236,6 +314,10 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(jTableUser);
+        if (jTableUser.getColumnModel().getColumnCount() > 0) {
+            jTableUser.getColumnModel().getColumn(2).setHeaderValue("Apellido");
+            jTableUser.getColumnModel().getColumn(3).setHeaderValue("Contraseña");
+        }
 
         jButtonDeleteUser.setText("Eliminar");
         jButtonDeleteUser.addActionListener(new java.awt.event.ActionListener() {
@@ -375,6 +457,22 @@ public class menu extends javax.swing.JFrame {
         col = source.columnAtPoint(evt.getPoint()); // Guardamos la columna
         id = source.getModel().getValueAt(row, 0).toString();
     }//GEN-LAST:event_jTableUserMouseClicked
+
+    private void jTableProviderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProviderMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableProviderMouseClicked
+
+    private void jButtonDeleteProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteProviderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteProviderActionPerformed
+
+    private void jButtonEditProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditProviderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonEditProviderActionPerformed
+
+    private void jButtonAddProviderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddProviderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddProviderActionPerformed
     
     public void updateTableStock(){ // actualizo la tabla
         while(jTableStock.getRowCount() != 0) ((DefaultTableModel)jTableStock.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
@@ -433,23 +531,29 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddClient;
+    private javax.swing.JButton jButtonAddProvider;
     private javax.swing.JButton jButtonAddStock;
     private javax.swing.JButton jButtonAddUser;
     private javax.swing.JButton jButtonDeleteCient;
+    private javax.swing.JButton jButtonDeleteProvider;
     private javax.swing.JButton jButtonDeleteStock;
     private javax.swing.JButton jButtonDeleteUser;
     private javax.swing.JButton jButtonEditClient;
+    private javax.swing.JButton jButtonEditProvider;
     private javax.swing.JButton jButtonEditStock;
     private javax.swing.JButton jButtonEditUser;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableClient;
+    private javax.swing.JTable jTableProvider;
     private javax.swing.JTable jTableStock;
     private javax.swing.JTable jTableUser;
     // End of variables declaration//GEN-END:variables
