@@ -1,21 +1,18 @@
 /*
 * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+*
+* Clase la cual utilizaremos para conectarnos a la Base de Dato y proximamente su creación automatica
+*
 */
 package database;
-import com.google.api.core.ApiFuture;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
-import com.google.cloud.firestore.QueryDocumentSnapshot;
-import com.google.cloud.firestore.QuerySnapshot;
-import com.google.cloud.firestore.WriteResult;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
 import com.google.firebase.cloud.FirestoreClient;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import ventana.menu;
 
 /**
  *
@@ -23,12 +20,14 @@ import java.util.Map;
  */
 public class creationDB {
     
-    static Firestore bd;
+    static menu m = new menu();
+    
+    static Firestore bd; // Referencia de la BBDD
     
     public static void conectar(){
         try{
             
-            FileInputStream refreshToken = new FileInputStream("proyectofap.json");
+            FileInputStream refreshToken = new FileInputStream("proyectofap.json"); // Credenciales para poder editar la BBDD
             
             FirebaseOptions options = FirebaseOptions.builder()
                     .setCredentials(GoogleCredentials.fromStream(refreshToken))
@@ -37,31 +36,7 @@ public class creationDB {
             
             FirebaseApp.initializeApp(options);
             bd = FirestoreClient.getFirestore();
-            
-            System.out.println("Hola");
         }
-        catch(Exception e){System.out.println(e);}
-    }
-    
-    public static void insert(String id, Map data){
-        try{
-            
-            ApiFuture<WriteResult> future = bd.collection("nombres").document(id).set(data);
-            System.out.println("Update time : " + future.get().getUpdateTime());
-        }
-        catch(Exception e){System.out.println(e);}
-    }
-    
-    public static void read(){
-        try{
-            // asynchronously retrieve all documents
-            ApiFuture<QuerySnapshot> future = bd.collection("nombres").get();
-            // future.get() blocks on response
-            List<QueryDocumentSnapshot> documents = future.get().getDocuments();
-            for (QueryDocumentSnapshot document : documents) {
-                System.out.println(document.getId() + " => " + document.getReference().getId());
-            }
-        }
-        catch(Exception e){System.out.println(e);}
+        catch(Exception e){System.out.println("Error al conectarse: " + e);}
     }
 }
