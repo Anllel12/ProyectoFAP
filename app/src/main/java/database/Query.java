@@ -41,18 +41,32 @@ public class Query {
         catch(Exception e){System.out.println("Error al eliminar: " + e);}
     }
     
-    public void tableStock(JTable table){ // Mostramos al info de la BBDD en la tabla
+    public void tableStock(JTable table){ // Mostramos la info de la BBDD en la tabla
         try{
             // asynchronously retrieve all documents
             ApiFuture<QuerySnapshot> stmt = database.bd.collection("stock").get();
             // future.get() blocks on response
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
-                DefaultTableModel model = (DefaultTableModel) table.getModel(); // añade filas a la tabla automaticamente
+                DefaultTableModel model = (DefaultTableModel) table.getModel(); // aï¿½ade filas a la tabla automaticamente
                 model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("cantidad").toString(), document.getData().get("unidad")}); // Pone los datos en cada columna
             }
         }
         catch(Exception e){System.out.println("Error al poner datos en la tabla Stock: " + e);}
+    }
+    
+    public void tableUser(JTable table){ // Mostramos la info de la BBDD en la tabla
+        try{
+            // asynchronously retrieve all documents
+            ApiFuture<QuerySnapshot> stmt = database.bd.collection("usuarios").get();
+            // future.get() blocks on response
+            List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
+            for (QueryDocumentSnapshot document : documents) {
+                DefaultTableModel model = (DefaultTableModel) table.getModel(); // aï¿½ade filas a la tabla automaticamente
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contraseña").toString()}); // Pone los datos en cada columna
+            }
+        }
+        catch(Exception e){System.out.println("Error al poner datos en la tabla Usuarios: " + e);}
     }
     
     public void tableClient(JTable table){ // Mostramos al info de la BBDD en la tabla
@@ -62,7 +76,7 @@ public class Query {
             // future.get() blocks on response
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
-                DefaultTableModel model = (DefaultTableModel) table.getModel(); // añade filas a la tabla automaticamente
+                DefaultTableModel model = (DefaultTableModel) table.getModel(); // aï¿½ade filas a la tabla automaticamente
                 model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellidos"), document.getData().get("correo")}); // Pone los datos en cada columna
             }
         }
@@ -101,4 +115,19 @@ public class Query {
         catch(Exception e){System.out.println("Error al editar datos en la tabla Cliente: " + e);}
     }
     
+    public void updateUser(int col, String id, Object value) {
+        DocumentReference docRef = database.bd.collection("usuarios").document(id);
+        ApiFuture<WriteResult> stmt = null;
+        System.out.println(col);
+        try{
+            switch(col){ // segun el numero de la columna hace una cosa u otra
+                case 1: stmt = docRef.update("nombre", value.toString()); break;
+                case 2: stmt = docRef.update("apellido", value.toString()); break;
+                case 3: stmt = docRef.update("contraseña", value.toString()); break;
+            }  
+            WriteResult result = stmt.get();
+            System.out.println("Write result: " + result);
+        }
+        catch(Exception e){System.out.println("Error al editar datos en la tabla Stock: " + e);}
+    }
 }
