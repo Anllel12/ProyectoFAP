@@ -63,7 +63,7 @@ public class Query {
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
                 DefaultTableModel model = (DefaultTableModel) table.getModel(); // aï¿½ade filas a la tabla automaticamente
-                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contraseï¿½a")}); // Pone los datos en cada columna
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contraseña").toString()}); // Pone los datos en cada columna
             }
         }
         catch(Exception e){System.out.println("Error al poner datos en la tabla Usuarios: " + e);}
@@ -115,4 +115,19 @@ public class Query {
         catch(Exception e){System.out.println("Error al editar datos en la tabla Cliente: " + e);}
     }
     
+    public void updateUser(int col, String id, Object value) {
+        DocumentReference docRef = database.bd.collection("usuarios").document(id);
+        ApiFuture<WriteResult> stmt = null;
+        System.out.println(col);
+        try{
+            switch(col){ // segun el numero de la columna hace una cosa u otra
+                case 1: stmt = docRef.update("nombre", value.toString()); break;
+                case 2: stmt = docRef.update("apellido", value.toString()); break;
+                case 3: stmt = docRef.update("contraseña", value.toString()); break;
+            }  
+            WriteResult result = stmt.get();
+            System.out.println("Write result: " + result);
+        }
+        catch(Exception e){System.out.println("Error al editar datos en la tabla Stock: " + e);}
+    }
 }
