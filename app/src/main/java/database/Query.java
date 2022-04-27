@@ -12,10 +12,21 @@ import com.google.cloud.firestore.DocumentReference;
 import com.google.cloud.firestore.QueryDocumentSnapshot;
 import com.google.cloud.firestore.QuerySnapshot;
 import com.google.cloud.firestore.WriteResult;
+import java.security.MessageDigest;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutionException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+
+
 
 /**
  *
@@ -24,7 +35,7 @@ import javax.swing.table.DefaultTableModel;
 public class Query {
     
     creationDB database = new creationDB();
-    
+   
     public void insert(String id, Map data, String coleccion){
         try{          
             ApiFuture<WriteResult> stmt = database.bd.collection(coleccion).document(id).set(data);
@@ -138,4 +149,60 @@ public class Query {
         }
         catch(Exception e){System.out.println("Error al insertar: " + e);}
     }
+    
+    
+
+    public void login(String correo, String contra) {
+         try {
+            ApiFuture<QuerySnapshot> stmt = database.bd.collection("usuarios").get();
+            // future.get() blocks on response
+            List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
+            for (QueryDocumentSnapshot document : documents) {
+                 
+                /* document.getReference().getId(),document.getData().get("nombre"), 
+                document.getData().get("apellidos"), document.getData().get("correo")}) */
+                /* Object user =new Object[]{(document.getReference(), document.getData().get("correo")});*/
+                System.out.println(document.getReference().getId().toString());
+                System.out.println(correo);
+                if(document.getReference().getId().equals(correo)){
+                    System.out.println("si");
+                   
+                    
+                    break;
+                }else{
+                    System.out.println("no");
+                }
+            }
+        } catch(Exception e){System.out.println("Error al insertar: " + e);}
+    }
+    public byte[] cifra(String sinCifrar) throws Exception {
+	final byte[] bytes = sinCifrar.getBytes("UTF-8");
+	final Cipher aes = obtieneCipher(true);
+	final byte[] cifrado = aes.doFinal(bytes);
+	return cifrado;
 }
+    private Cipher obtieneCipher(boolean paraCifrar) throws Exception {
+	final String frase = "FAP-CONTRASENYAFILTRADRO_áÁéÉíÍóÓúÚüÜñÑ1234567890!#%$&()=%_NO_USAR_ESTA_FRASE!_";
+	final MessageDigest digest = MessageDigest.getInstance("SHA");
+	digest.update(frase.getBytes("UTF-8"));
+	final SecretKeySpec key = new SecretKeySpec(digest.digest(), 0, 16, "AES");
+
+	final Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
+	if (paraCifrar) {
+		aes.init(Cipher.ENCRYPT_MODE, key);
+	} else {
+		aes.init(Cipher.DECRYPT_MODE, key);
+	}
+
+	return aes;
+}
+    public String descifra(byte[] cifrado) throws Exception {
+	final Cipher aes = obtieneCipher(false);
+	final byte[] bytes = aes.doFinal(cifrado);
+	final String sinCifrar = new String(bytes, "UTF-8");
+	return sinCifrar;
+}
+        
+        
+    }
+

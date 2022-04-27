@@ -28,27 +28,7 @@ public class Registrar extends javax.swing.JFrame {
         db.conectar();
       
     }
-    public byte[] cifra(String sinCifrar) throws Exception {
-	final byte[] bytes = sinCifrar.getBytes("UTF-8");
-	final Cipher aes = obtieneCipher(true);
-	final byte[] cifrado = aes.doFinal(bytes);
-	return cifrado;
-}
-    private Cipher obtieneCipher(boolean paraCifrar) throws Exception {
-	final String frase = "FAP-CONTRASENYAFILTRADRO_áÁéÉíÍóÓúÚüÜñÑ1234567890!#%$&()=%_NO_USAR_ESTA_FRASE!_";
-	final MessageDigest digest = MessageDigest.getInstance("SHA");
-	digest.update(frase.getBytes("UTF-8"));
-	final SecretKeySpec key = new SecretKeySpec(digest.digest(), 0, 16, "AES");
-
-	final Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
-	if (paraCifrar) {
-		aes.init(Cipher.ENCRYPT_MODE, key);
-	} else {
-		aes.init(Cipher.DECRYPT_MODE, key);
-	}
-
-	return aes;
-}
+    
    
     /**
      * This method is called from within the constructor to initialize the form.
@@ -159,7 +139,7 @@ public class Registrar extends javax.swing.JFrame {
            data.put("nombre", jTextNombre.getText());
            data.put("apellido", jTextApellidos.getText());
            String contra = jTextContrasena.getText();
-           byte[] contrafinal = cifra(contra);
+           byte[] contrafinal = q.cifra(contra);
            String contrasena = new String(contrafinal, java.nio.charset.StandardCharsets.UTF_8);
            data.put("contraseña", contrasena);
            String correo = jTextCorreo.getText();

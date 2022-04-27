@@ -8,13 +8,14 @@ import com.google.cloud.firestore.CollectionReference;
 import com.google.cloud.firestore.DocumentReference;
 import database.Query;
 import database.creationDB;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Pep Marto
  */
 public class Login extends javax.swing.JFrame {
- creationDB db = new creationDB();
+    creationDB db = new creationDB();
     Query q =  new Query();
     /**
      * Creates new form Login
@@ -124,13 +125,17 @@ public class Login extends javax.swing.JFrame {
 
     private void jInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInicioSesionActionPerformed
         
+        String correo = jTextCorreo.getText();
+        String contra = jTextContrasena.getText();
+        if(jTextCorreo.getText().isEmpty() && jTextContrasena.getText().isEmpty()){
+              JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS",
+                      "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else{
+        q.login(correo,contra);
+        }
         
-        DocumentReference docRef = database.bd.collection("usuarios").document(id);
         
         
-        menu abrir = new menu();
-        abrir.setVisible(true);
-        this.setVisible(false); 
     }//GEN-LAST:event_jInicioSesionActionPerformed
 
     /**
