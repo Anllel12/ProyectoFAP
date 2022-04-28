@@ -131,7 +131,12 @@ public class Login extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS",
                       "ERROR", JOptionPane.WARNING_MESSAGE);
         }else{
-        q.login(correo,contra);
+        if(q.login(correo,contra)==true){
+            menu abrir= new menu();
+            abrir.setVisible(true);
+            this.setVisible(false); 
+        }
+        
         }
         
         

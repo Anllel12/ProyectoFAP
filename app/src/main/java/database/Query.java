@@ -25,6 +25,10 @@ import javax.swing.table.DefaultTableModel;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import org.apache.commons.codec.digest.DigestUtils;
+import ventana.Login;
+import ventana.Registrar;
+import ventana.menu;
 
 
 
@@ -142,66 +146,45 @@ public class Query {
         catch(Exception e){System.out.println("Error al editar datos en la tabla Stock: " + e);}
     }
 
-    public void registrar(String correo, Map<String, Object> data, String usuarios) {
+    public boolean registrar(String correo, Map<String, Object> data, String usuarios) {
         try{          
             ApiFuture<WriteResult> stmt = database.bd.collection(usuarios).document(correo).set(data);
             System.out.println("Update time : " + stmt.get().getUpdateTime());
+            return true;
         }
-        catch(Exception e){System.out.println("Error al insertar: " + e);}
+        catch(Exception e){System.out.println("Error al insertar: " + e);
+        return false;}
     }
     
     
 
-    public void login(String correo, String contra) {
+    public boolean login(String correo, String contra) {
          try {
             ApiFuture<QuerySnapshot> stmt = database.bd.collection("usuarios").get();
             // future.get() blocks on response
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
-                 
-                /* document.getReference().getId(),document.getData().get("nombre"), 
-                document.getData().get("apellidos"), document.getData().get("correo")}) */
-                /* Object user =new Object[]{(document.getReference(), document.getData().get("correo")});*/
-                System.out.println(document.getReference().getId().toString());
-                System.out.println(correo);
-                if(document.getReference().getId().equals(correo)){
-                    System.out.println("si");
-                   
-                    
-                    break;
+                String contral = document.getData().get("contraseña").toString();
+                String email = document.getId().toString();
+                char arrayD[]= contral.toCharArray();
+                for(int i=0; i< arrayD.length; i++)
+                {
+                arrayD[i] =(char)(arrayD[i]-(char)5);
+                }
+                
+                String desencriptado = String.valueOf(arrayD);
+                System.out.println(desencriptado);
+                System.out.println(contra);
+                if(contra.equals(desencriptado) && correo.equals(email)){ 
+                    return true;
                 }else{
-                    System.out.println("no");
+                    
                 }
             }
         } catch(Exception e){System.out.println("Error al insertar: " + e);}
+        return false;
     }
-    public byte[] cifra(String sinCifrar) throws Exception {
-	final byte[] bytes = sinCifrar.getBytes("UTF-8");
-	final Cipher aes = obtieneCipher(true);
-	final byte[] cifrado = aes.doFinal(bytes);
-	return cifrado;
-}
-    private Cipher obtieneCipher(boolean paraCifrar) throws Exception {
-	final String frase = "FAP-CONTRASENYAFILTRADRO_áÁéÉíÍóÓúÚüÜñÑ1234567890!#%$&()=%_NO_USAR_ESTA_FRASE!_";
-	final MessageDigest digest = MessageDigest.getInstance("SHA");
-	digest.update(frase.getBytes("UTF-8"));
-	final SecretKeySpec key = new SecretKeySpec(digest.digest(), 0, 16, "AES");
-
-	final Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
-	if (paraCifrar) {
-		aes.init(Cipher.ENCRYPT_MODE, key);
-	} else {
-		aes.init(Cipher.DECRYPT_MODE, key);
-	}
-
-	return aes;
-}
-    public String descifra(byte[] cifrado) throws Exception {
-	final Cipher aes = obtieneCipher(false);
-	final byte[] bytes = aes.doFinal(cifrado);
-	final String sinCifrar = new String(bytes, "UTF-8");
-	return sinCifrar;
-}
+    
         
         
     }

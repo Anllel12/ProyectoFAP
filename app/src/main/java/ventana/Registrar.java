@@ -13,6 +13,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
+import javax.swing.JOptionPane;
+import org.apache.commons.codec.digest.DigestUtils;
 
 /**
  *
@@ -134,16 +136,32 @@ public class Registrar extends javax.swing.JFrame {
 
     private void jRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegistrarActionPerformed
          try {
+             if(jTextCorreo.getText().isEmpty() || jTextContrasena.getText().isEmpty() 
+                     || jTextApellidos.getText().isEmpty() || jTextNombre.getText().isEmpty()
+                     || !jTextCorreo.getText().contains("@")){
+              JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS "
+                      + "O CORREO NO VALIDO",
+                      "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else{
            Map<String, Object> data = new HashMap<>();
            data.put("correo", jTextCorreo.getText());
            data.put("nombre", jTextNombre.getText());
            data.put("apellido", jTextApellidos.getText());
            String contra = jTextContrasena.getText();
-           byte[] contrafinal = q.cifra(contra);
-           String contrasena = new String(contrafinal, java.nio.charset.StandardCharsets.UTF_8);
-           data.put("contraseña", contrasena);
+            char array[] = contra.toCharArray();
+                for(int i=0; i< array.length; i++)
+                {
+                    array[i] =(char)(array[i] +(char)5);
+                }
+                String encriptado = String.valueOf(array);
+            data.put("contraseña", encriptado);
            String correo = jTextCorreo.getText();
-           q.registrar(correo, data, "usuarios");
+           if(q.registrar(correo, data, "usuarios")==true){
+                Login abrir= new Login();
+                abrir.setVisible(true);
+                this.setVisible(false);
+           }
+             }
        } catch (Exception ex) {
            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
        }
