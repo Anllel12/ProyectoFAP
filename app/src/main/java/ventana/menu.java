@@ -18,6 +18,7 @@ public class menu extends javax.swing.JFrame {
     Query q = new Query();
     AddStock addStock = new AddStock(this);
     AddClient addClient = new AddClient(this);
+    AddProveedores addProveedores = new AddProveedores(this);
     
     String id = ""; // Valor para guardar el id pinchado en la tabla
     int row = 0;
@@ -28,6 +29,7 @@ public class menu extends javax.swing.JFrame {
         db.conectar();
         q.tableStock(jTableStock); // Muestra la informacion en la tabla
         q.tableClient(jTableClient); // Muestra la informacion en la tabla
+        q.tableProve(jTableProve); // Muestra la informacion en la tabla
     }
 
     /**
@@ -53,6 +55,12 @@ public class menu extends javax.swing.JFrame {
         jButtonDeleteCient = new javax.swing.JButton();
         jButtonEditClient = new javax.swing.JButton();
         jButtonAddClient = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableProve = new javax.swing.JTable();
+        jButtonDeleteProve = new javax.swing.JButton();
+        jButtonEditProve = new javax.swing.JButton();
+        jButtonAddProve = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         jMenu1.setText("jMenu1");
@@ -199,6 +207,72 @@ public class menu extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Clientes", jPanel2);
 
+        jPanel4.setPreferredSize(new java.awt.Dimension(747, 440));
+
+        jTableProve.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Nombre", "Telefono", "Correo electronico"
+            }
+        ));
+        jTableProve.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableProveMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(jTableProve);
+
+        jButtonDeleteProve.setText("Eliminar");
+        jButtonDeleteProve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonDeleteProveActionPerformed(evt);
+            }
+        });
+
+        jButtonEditProve.setText("Editar");
+        jButtonEditProve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditProveActionPerformed(evt);
+            }
+        });
+
+        jButtonAddProve.setText("Añadir");
+        jButtonAddProve.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddProveActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButtonDeleteProve)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEditProve)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButtonAddProve)
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddProve)
+                    .addComponent(jButtonDeleteProve)
+                    .addComponent(jButtonEditProve))
+                .addGap(0, 70, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Proveedores", jPanel4);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -276,6 +350,31 @@ public class menu extends javax.swing.JFrame {
         col = source.columnAtPoint(evt.getPoint()); // Guardamos la columna
         id = source.getModel().getValueAt(row, 0).toString();
     }//GEN-LAST:event_jTableClientMouseClicked
+
+    private void jTableProveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableProveMouseClicked
+        JTable source = (JTable) evt.getSource();
+        row = source.rowAtPoint(evt.getPoint()); // Guardamos la fila para saber el id pinchado
+        col = source.columnAtPoint(evt.getPoint()); // Guardamos la columna
+        id = source.getModel().getValueAt(row, 0).toString();
+    }//GEN-LAST:event_jTableProveMouseClicked
+
+    private void jButtonDeleteProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDeleteProveActionPerformed
+        q.delete("proveedores", id);
+        updateTableProve();
+    }//GEN-LAST:event_jButtonDeleteProveActionPerformed
+
+    private void jButtonEditProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditProveActionPerformed
+        if(jTableProve.isEditing()){ // comprueba si esta editando la tabla
+            JOptionPane.showMessageDialog(null, "Deje de editar el campo (Pulse ENTER para dejar de editar).", "ERROR", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            q.updateProve(col,id, ((DefaultTableModel)jTableProve.getModel()).getValueAt(row, col));
+        }
+    }//GEN-LAST:event_jButtonEditProveActionPerformed
+
+    private void jButtonAddProveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddProveActionPerformed
+        addProveedores.setVisible(true);
+    }//GEN-LAST:event_jButtonAddProveActionPerformed
     
     public void updateTableStock(){ // actualizo la tabla
         while(jTableStock.getRowCount() != 0) ((DefaultTableModel)jTableStock.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
@@ -288,6 +387,13 @@ public class menu extends javax.swing.JFrame {
         while(jTableClient.getRowCount() != 0) ((DefaultTableModel)jTableClient.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
         
         q.tableClient(jTableClient);
+    }
+    
+    //funciones tabla proveedores, sacado del codigo ya enseñado
+    public void updateTableProve(){ // actualizo la tabla
+        while(jTableProve.getRowCount() != 0) ((DefaultTableModel)jTableProve.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
+        
+        q.tableProve(jTableProve);
     }
     
     /**
@@ -328,19 +434,25 @@ public class menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddClient;
+    private javax.swing.JButton jButtonAddProve;
     private javax.swing.JButton jButtonAddStock;
     private javax.swing.JButton jButtonDeleteCient;
+    private javax.swing.JButton jButtonDeleteProve;
     private javax.swing.JButton jButtonDeleteStock;
     private javax.swing.JButton jButtonEditClient;
+    private javax.swing.JButton jButtonEditProve;
     private javax.swing.JButton jButtonEditStock;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTableClient;
+    private javax.swing.JTable jTableProve;
     private javax.swing.JTable jTableStock;
     // End of variables declaration//GEN-END:variables
 }
