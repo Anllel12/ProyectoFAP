@@ -161,3 +161,44 @@ public class Query {
     }
     
 }
+
+    public boolean registrar(String correo, Map<String, Object> data, String usuarios) {
+        try{          
+            ApiFuture<WriteResult> stmt = database.bd.collection(usuarios).document(correo).set(data);
+            System.out.println("Update time : " + stmt.get().getUpdateTime());
+            return true;
+        }
+        catch(Exception e){System.out.println("Error al insertar: " + e);
+        return false;}
+    }
+    
+
+    
+    public boolean login(String correo, String contra) {
+         try {
+            ApiFuture<QuerySnapshot> stmt = database.bd.collection("usuarios").get();
+            // future.get() blocks on response
+            List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
+            for (QueryDocumentSnapshot document : documents) {
+                String email = document.getId().toString();
+                String contral = document.getData().get("contraseña").toString();
+                char arrayD[]= contral.toCharArray();
+                for(int i=0; i< arrayD.length; i++)
+                arrayD[i] =(char)(arrayD[i]-(char)5);
+                {
+                }
+                String desencriptado = String.valueOf(arrayD);
+                
+                if(contra.equals(desencriptado) && correo.equals(email)){ 
+                    return true;
+                    
+                }
+                }else{
+            }
+        } catch(Exception e){System.out.println("Error al insertar: " + e);}
+        return false;
+    }
+    
+        
+        
+    }

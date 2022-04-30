@@ -36,10 +36,10 @@ public class AddUser extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextApellido = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextContraseña = new javax.swing.JTextField();
+        jTextContrasena = new javax.swing.JTextField();
         jButtonAceptar = new javax.swing.JButton();
 
-        setTitle("Añadir Usuarios");
+        setTitle("AÃ±adir Usuarios");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("Correo");
@@ -51,7 +51,7 @@ public class AddUser extends javax.swing.JFrame {
         jLabel3.setText("Apellido");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel4.setText("Contraseña");
+        jLabel4.setText("ContraseÃ±a");
 
         jButtonAceptar.setText("Aceptar");
         jButtonAceptar.addActionListener(new java.awt.event.ActionListener() {
@@ -74,7 +74,7 @@ public class AddUser extends javax.swing.JFrame {
                 .addGap(68, 68, 68)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(155, Short.MAX_VALUE))
@@ -101,7 +101,7 @@ public class AddUser extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(jTextContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
                 .addComponent(jButtonAceptar)
                 .addContainerGap())
@@ -114,7 +114,7 @@ public class AddUser extends javax.swing.JFrame {
         Map<String, Object> data = new HashMap<>();
         data.put("nombre", jTextNombre.getText());
         data.put("apellido", jTextApellido.getText());
-        data.put("contraseña", jTextContraseña.getText());
+        data.put("contraseÃ±a", jTextContrasena.getText());
         String uuid = jTextCorreo.getText();
         m.q.insert(uuid, data, "usuarios");
         m.updateTableUser();
@@ -127,7 +127,7 @@ public class AddUser extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextApellido;
-    private javax.swing.JTextField jTextContraseña;
+    private javax.swing.JTextField jTextContrasena;
     private javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
