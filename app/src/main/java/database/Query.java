@@ -79,7 +79,7 @@ public class Query {
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
                 DefaultTableModel model = (DefaultTableModel) table.getModel(); // a�ade filas a la tabla automaticamente
-                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contrase�a").toString()}); // Pone los datos en cada columna
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contraseña").toString()}); // Pone los datos en cada columna
             }
         }
         catch(Exception e){System.out.println("Error al poner datos en la tabla Usuarios: " + e);}
