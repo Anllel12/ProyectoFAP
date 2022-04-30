@@ -22,7 +22,7 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'ventana.menu'
+    mainClass = 'ventana.Login'
 }
 
 tasks.named('test') {
