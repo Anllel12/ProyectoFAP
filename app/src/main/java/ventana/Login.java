@@ -127,7 +127,7 @@ public class Login extends javax.swing.JFrame {
         
         String correo = jTextCorreo.getText();
         String contra = jTextContrasena.getText();
-        if(jTextCorreo.getText().isEmpty() && jTextContrasena.getText().isEmpty()){
+        if(jTextCorreo.getText().isEmpty() || jTextContrasena.getText().isEmpty()){
               JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS",
                       "ERROR", JOptionPane.WARNING_MESSAGE);
         }else{
@@ -135,6 +135,9 @@ public class Login extends javax.swing.JFrame {
             menu abrir= new menu();
             abrir.setVisible(true);
             this.setVisible(false); 
+        }else{
+            JOptionPane.showMessageDialog(null, "Credenciales no validas",
+                      "ERROR", JOptionPane.WARNING_MESSAGE);
         }
         
         }

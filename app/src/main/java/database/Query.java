@@ -25,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.FirebaseOptions;
+import javax.swing.JOptionPane;
 import org.apache.commons.codec.digest.DigestUtils;
 import ventana.Login;
 import ventana.Registrar;
@@ -173,8 +174,6 @@ public class Query {
                 }
                 
                 String desencriptado = String.valueOf(arrayD);
-                System.out.println(desencriptado);
-                System.out.println(contra);
                 if(contra.equals(desencriptado) && correo.equals(email)){ 
                     return true;
                 }else{
