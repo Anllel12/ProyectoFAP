@@ -58,13 +58,13 @@ public class menu extends javax.swing.JFrame {
         jButtonEditClient = new javax.swing.JButton();
         jButtonAddClient = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTableProve = new javax.swing.JTable();
         jButtonDeleteProve = new javax.swing.JButton();
         jButtonEditProve = new javax.swing.JButton();
         jButtonAddProve = new javax.swing.JButton();
-        jTableProve = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
         jTableUser = new javax.swing.JTable();
         jButtonDeleteUser = new javax.swing.JButton();
         jButtonEditUser = new javax.swing.JButton();
@@ -99,7 +99,7 @@ public class menu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableStock);
 
-        jButtonAddStock.setText("A�adir");
+        jButtonAddStock.setText("Añadir");
         jButtonAddStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddStockActionPerformed(evt);
@@ -187,7 +187,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddClient.setText("A�adir");
+        jButtonAddClient.setText("Añadir");
         jButtonAddClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddClientActionPerformed(evt);
@@ -253,7 +253,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddProve.setText("A�adir");
+        jButtonAddProve.setText("Añadir");
         jButtonAddProve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddProveActionPerformed(evt);
@@ -292,16 +292,16 @@ public class menu extends javax.swing.JFrame {
             new Object [][] {
 
             },
-                "Correo", "Nombre", "Apellido", "Contrase�a"
             new String [] {
+                "Correo", "Nombre", "Apellido", "Contraseña"
             }
-            boolean[] canEdit = new boolean [] {
         ) {
-            };
+            boolean[] canEdit = new boolean [] {
                 false, true, true, true
+            };
 
-                return canEdit [columnIndex];
             public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTableUser.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -309,10 +309,10 @@ public class menu extends javax.swing.JFrame {
                 jTableUserMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(jTableUser);
+        jScrollPane4.setViewportView(jTableUser);
         if (jTableUser.getColumnModel().getColumnCount() > 0) {
             jTableUser.getColumnModel().getColumn(2).setHeaderValue("Apellido");
-            jTableUser.getColumnModel().getColumn(3).setHeaderValue("Contrase�a");
+            jTableUser.getColumnModel().getColumn(3).setHeaderValue("Contraseña");
         }
 
         jButtonDeleteUser.setText("Eliminar");
@@ -323,24 +323,24 @@ public class menu extends javax.swing.JFrame {
         });
 
         jButtonEditUser.setText("Editar");
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
         jButtonEditUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonEditUserActionPerformed(evt);
             }
         });
-        jButtonAddUser.setText("A�adir");
 
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jButtonAddUser.setText("Añadir");
         jButtonAddUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddUserActionPerformed(evt);
-        });
             }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonDeleteUser)
@@ -353,7 +353,7 @@ public class menu extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDeleteUser)
