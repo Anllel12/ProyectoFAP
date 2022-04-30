@@ -160,7 +160,7 @@ public class Query {
         catch(Exception e){System.out.println("Error al editar datos en la tabla Cliente: " + e);}
     }
     
-}
+
 
     public boolean registrar(String correo, Map<String, Object> data, String usuarios) {
         try{          
@@ -193,12 +193,11 @@ public class Query {
                     return true;
                     
                 }
-                }else{
-            }
+                }
         } catch(Exception e){System.out.println("Error al insertar: " + e);}
         return false;
     }
+}
+   
+        
     
-        
-        
-    }
