@@ -38,9 +38,9 @@ public class Login extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jTextCorreo = new javax.swing.JTextField();
-        jTextContrasena = new javax.swing.JTextField();
         jInicioSesion = new javax.swing.JButton();
         jRegistrarse = new javax.swing.JButton();
+        jTextContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,15 +83,16 @@ public class Login extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 60, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addGap(31, 31, 31)
-                        .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(31, 31, 31)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextCorreo, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                    .addComponent(jTextContrasena))
                 .addGap(110, 110, 110))
         );
         layout.setVerticalGroup(
@@ -105,8 +106,8 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabel3)
+                    .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(50, 50, 50)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRegistrarse)
@@ -126,12 +127,13 @@ public class Login extends javax.swing.JFrame {
     private void jInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInicioSesionActionPerformed
         
         String correo = jTextCorreo.getText();
-        String contra = jTextContrasena.getText();
-        if(jTextCorreo.getText().isEmpty() || jTextContrasena.getText().isEmpty()){
+        String contrasena = String.valueOf(jTextContrasena.getPassword());
+        System.out.println(contrasena);
+        if(jTextCorreo.getText().isEmpty() || contrasena.isEmpty()){
               JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS",
                       "ERROR", JOptionPane.WARNING_MESSAGE);
         }else{
-        if(q.login(correo,contra)==true){
+        if(q.login(correo,contrasena)==true){
             menu abrir= new menu();
             abrir.setVisible(true);
             this.setVisible(false); 
@@ -187,7 +189,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JButton jRegistrarse;
-    private javax.swing.JTextField jTextContrasena;
+    private javax.swing.JPasswordField jTextContrasena;
     private javax.swing.JTextField jTextCorreo;
     // End of variables declaration//GEN-END:variables
 }

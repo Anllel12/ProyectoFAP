@@ -49,8 +49,8 @@ public class Registrar extends javax.swing.JFrame {
         Apellidos = new java.awt.Label();
         jTextApellidos = new javax.swing.JTextField();
         Contrasena = new java.awt.Label();
-        jTextContrasena = new javax.swing.JTextField();
         jRegistrar = new javax.swing.JButton();
+        jTextContrasena = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,14 +122,15 @@ public class Registrar extends javax.swing.JFrame {
                     .addComponent(jTextApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(Contrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(22, 22, 22))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jTextContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addComponent(jRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
-
-        Correo.getAccessibleContext().setAccessibleName("Correo:");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -147,7 +148,8 @@ public class Registrar extends javax.swing.JFrame {
            data.put("correo", jTextCorreo.getText());
            data.put("nombre", jTextNombre.getText());
            data.put("apellido", jTextApellidos.getText());
-           String contra = jTextContrasena.getText();
+           String contra = String.valueOf(jTextContrasena.getPassword());
+                 System.out.println(contra);
             char array[] = contra.toCharArray();
                 for(int i=0; i< array.length; i++)
                 {
@@ -210,7 +212,7 @@ public class Registrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jRegistrar;
     private javax.swing.JTextField jTextApellidos;
-    private javax.swing.JTextField jTextContrasena;
+    private javax.swing.JPasswordField jTextContrasena;
     private javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
