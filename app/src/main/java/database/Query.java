@@ -48,8 +48,8 @@ public class Query {
             // future.get() blocks on response
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
-                DefaultTableModel model = (DefaultTableModel) table.getModel(); // a�ade filas a la tabla automaticamente
-                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("cantidad").toString(), document.getData().get("unidad")}); // Pone los datos en cada columna
+                DefaultTableModel model = (DefaultTableModel) table.getModel(); // anade filas a la tabla automaticamente
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("cantidad").toString(), document.getData().get("unidad"), document.getData().get("coste").toString(), document.getData().get("venta").toString(), document.getData().get("min").toString(), document.getData().get("max").toString()}); // Pone los datos en cada columna
             }
         }
         catch(Exception e){System.out.println("Error al poner datos en la tabla Stock: " + e);}
@@ -106,6 +106,10 @@ public class Query {
                 case 1: stmt = docRef.update("nombre", value.toString()); break;
                 case 2: stmt = docRef.update("cantidad", (int)value); break;
                 case 3: stmt = docRef.update("unidad", value.toString()); break;
+                case 4: stmt = docRef.update("coste", (int)value); break;
+                case 5: stmt = docRef.update("venta", (int)value); break;
+                case 6: stmt = docRef.update("min", (int)value); break;
+                case 7: stmt = docRef.update("max", (int)value); break;
             }  
             WriteResult result = stmt.get();
             System.out.println("Write result: " + result);
