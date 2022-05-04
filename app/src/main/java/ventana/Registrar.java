@@ -1,7 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+*/
 package ventana;
 
 import database.Query;
@@ -21,17 +21,16 @@ import org.apache.commons.codec.digest.DigestUtils;
  * @author Pep Marto
  */
 public class Registrar extends javax.swing.JFrame {
-
-   creationDB db = new creationDB();
+    
+    creationDB db = new creationDB();
     Query q =  new Query();
     
     public Registrar() {
         initComponents();
-        db.conectar();
-      
+        db.conectar();        
     }
     
-   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -135,38 +134,38 @@ public class Registrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegistrarActionPerformed
-         try {
-             if(jTextCorreo.getText().isEmpty() || jTextContrasena.getText().isEmpty() 
-                     || jTextApellidos.getText().isEmpty() || jTextNombre.getText().isEmpty()
-                     || !jTextCorreo.getText().contains("@")){
-              JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS "
-                      + "O CORREO NO VALIDO",
-                      "ERROR", JOptionPane.WARNING_MESSAGE);
-        }else{
-           Map<String, Object> data = new HashMap<>();
-           data.put("correo", jTextCorreo.getText());
-           data.put("nombre", jTextNombre.getText());
-           data.put("apellido", jTextApellidos.getText());
-           String contra = jTextContrasena.getText();
-            char array[] = contra.toCharArray();
+        try {
+            if(jTextCorreo.getText().isEmpty() || jTextContrasena.getText().isEmpty()
+                    || jTextApellidos.getText().isEmpty() || jTextNombre.getText().isEmpty()
+                    || !jTextCorreo.getText().contains("@")){
+                JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS "
+                        + "O CORREO NO VALIDO",
+                        "ERROR", JOptionPane.WARNING_MESSAGE);
+            }else{
+                Map<String, Object> data = new HashMap<>();
+                data.put("correo", jTextCorreo.getText());
+                data.put("nombre", jTextNombre.getText());
+                data.put("apellido", jTextApellidos.getText());
+                String contra = jTextContrasena.getText();
+                char array[] = contra.toCharArray();
                 for(int i=0; i< array.length; i++)
                 {
                     array[i] =(char)(array[i] +(char)5);
                 }
                 String encriptado = String.valueOf(array);
-            data.put("contraseña", encriptado);
-           String correo = jTextCorreo.getText();
-           if(q.registrar(correo, data, "usuarios")==true){
-                Login abrir= new Login();
-                abrir.setVisible(true);
-                this.setVisible(false);
-           }
-             }
-       } catch (Exception ex) {
-           Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
-       }
+                data.put("contraseña", encriptado);
+                String correo = jTextCorreo.getText();
+                if(q.registrar(correo, data, "usuarios")==true){
+                    Login abrir= new Login();
+                    abrir.setVisible(true);
+                    this.setVisible(false);
+                }
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jRegistrarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -174,8 +173,8 @@ public class Registrar extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -193,7 +192,7 @@ public class Registrar extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Registrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -214,6 +213,6 @@ public class Registrar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
-
-   
+    
+    
 }

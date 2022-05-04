@@ -103,9 +103,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Correo:"/>
       </Properties>
-      <AccessibilityProperties>
-        <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Correo:"/>
-      </AccessibilityProperties>
     </Component>
     <Component class="javax.swing.JTextField" name="jTextNombre">
     </Component>

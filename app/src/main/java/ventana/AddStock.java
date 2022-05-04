@@ -1,28 +1,29 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- *
- * Form para realizar la inserccion de los datos sobre el stock
- *
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+*
+* Form para realizar la inserccion de los datos sobre el stock
+*
+*/
 package ventana;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author anlle
  */
 public class AddStock extends javax.swing.JFrame {
-
+    
     menu m;
     
     public AddStock(menu _menu) {
         initComponents();
         m = _menu;
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -160,12 +161,12 @@ public class AddStock extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jTextMin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel8)
-                        .addComponent(jTextMax, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel4)
+                        .addComponent(jTextUnidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(jButtonAceptar)
                 .addContainerGap())
@@ -175,17 +176,25 @@ public class AddStock extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        Map<String, Object> data = new HashMap<>();
-        data.put("nombre", jTextNombre.getText());
-        data.put("cantidad", Integer.parseInt(jTextCantidad.getText()));
-        data.put("unidad", jTextUnidad.getText());
-        data.put("coste", Integer.parseInt(jTextCoste.getText()));
-        data.put("venta", Integer.parseInt(jTextVenta.getText()));
-        data.put("min", Integer.parseInt(jTextMin.getText()));
-        data.put("max", Integer.parseInt(jTextMax.getText()));
-        String uuid = jTextId.getText();
-        m.q.insert(uuid, data, "stock");
-        m.updateTableStock();
+        if(jTextNombre.getText().isEmpty() || jTextCantidad.getText().isEmpty()
+                || jTextUnidad.getText().isEmpty() || jTextCoste.getText().isEmpty()
+                || jTextVenta.getText().isEmpty()||jTextMin.getText().isEmpty()|| jTextMax.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS "
+                    + "O CORREO NO VALIDO",
+                    "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Map<String, Object> data = new HashMap<>();
+            data.put("nombre", jTextNombre.getText());
+            data.put("cantidad", Integer.parseInt(jTextCantidad.getText()));
+            data.put("unidad", jTextUnidad.getText());
+            data.put("coste", Integer.parseInt(jTextCoste.getText()));
+            data.put("venta", Integer.parseInt(jTextVenta.getText()));
+            data.put("min", Integer.parseInt(jTextMin.getText()));
+            data.put("max", Integer.parseInt(jTextMax.getText()));
+            String uuid = jTextId.getText();
+            m.q.insert(uuid, data, "stock");
+            m.updateTableStock();
+        }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
