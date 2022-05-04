@@ -62,8 +62,8 @@ public class Query {
             // future.get() blocks on response
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
-                DefaultTableModel model = (DefaultTableModel) table.getModel(); // aï¿½ade filas a la tabla automaticamente
-                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contraseÃ±a").toString()}); // Pone los datos en cada columna
+                DefaultTableModel model = (DefaultTableModel) table.getModel(); // anade filas a la tabla automaticamente
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contraseña").toString()}); // Pone los datos en cada columna
             }
         }
         catch(Exception e){System.out.println("Error al poner datos en la tabla Usuarios: " + e);}
@@ -141,13 +141,14 @@ public class Query {
             switch(col){ // segun el numero de la columna hace una cosa u otra
                 case 1: stmt = docRef.update("nombre", value.toString()); break;
                 case 2: stmt = docRef.update("apellido", value.toString()); break;
-                case 3: stmt = docRef.update("contraseï¿½a", value.toString()); break;
+                case 3: stmt = docRef.update("contraseña", value.toString()); break;
             }  
             WriteResult result = stmt.get();
             System.out.println("Write result: " + result);
         }
         catch(Exception e){System.out.println("Error al editar datos en la tabla Stock: " + e);}
     }
+    
     public void updateProve(int col, String id, Object value) {
         DocumentReference docRef = database.bd.collection("proveedores").document(id);
         ApiFuture<WriteResult> stmt = null;
@@ -164,8 +165,6 @@ public class Query {
         catch(Exception e){System.out.println("Error al editar datos en la tabla Cliente: " + e);}
     }
     
-
-
     public boolean registrar(String correo, Map<String, Object> data, String usuarios) {
         try{          
             ApiFuture<WriteResult> stmt = database.bd.collection(usuarios).document(correo).set(data);
@@ -176,8 +175,6 @@ public class Query {
         return false;}
     }
     
-
-    
     public boolean login(String correo, String contra) {
          try {
             ApiFuture<QuerySnapshot> stmt = database.bd.collection("usuarios").get();
@@ -185,7 +182,7 @@ public class Query {
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
                 String email = document.getId().toString();
-                String contral = document.getData().get("contraseÃ±a").toString();
+                String contral = document.getData().get("contraseña").toString();
                 char arrayD[]= contral.toCharArray();
                 for(int i=0; i< arrayD.length; i++)
                 arrayD[i] =(char)(arrayD[i]-(char)5);

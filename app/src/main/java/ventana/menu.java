@@ -81,11 +81,11 @@ public class menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Cantidad", "Unidad"
+                "ID", "Nombre", "Cantidad", "Unidad", "Coste", "Venta", "Stock minimo", "Stock maximo"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, true, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -99,7 +99,7 @@ public class menu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableStock);
 
-        jButtonAddStock.setText("AÃ±adir");
+        jButtonAddStock.setText("Añadir");
         jButtonAddStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddStockActionPerformed(evt);
@@ -187,7 +187,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddClient.setText("AÃ±adir");
+        jButtonAddClient.setText("Añadir");
         jButtonAddClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddClientActionPerformed(evt);
@@ -253,7 +253,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddProve.setText("AÃ±adir");
+        jButtonAddProve.setText("Añadir");
         jButtonAddProve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddProveActionPerformed(evt);
@@ -293,7 +293,7 @@ public class menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Correo", "Nombre", "Apellido", "ContraseÃ±a"
+                "Correo", "Nombre", "Apellido", "Contraseña"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -312,7 +312,7 @@ public class menu extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTableUser);
         if (jTableUser.getColumnModel().getColumnCount() > 0) {
             jTableUser.getColumnModel().getColumn(2).setHeaderValue("Apellido");
-            jTableUser.getColumnModel().getColumn(3).setHeaderValue("ContraseÃ±a");
+            jTableUser.getColumnModel().getColumn(3).setHeaderValue("Contraseña");
         }
 
         jButtonDeleteUser.setText("Eliminar");
@@ -329,7 +329,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddUser.setText("AÃ±adir");
+        jButtonAddUser.setText("Añadir");
         jButtonAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddUserActionPerformed(evt);
@@ -485,14 +485,14 @@ public class menu extends javax.swing.JFrame {
         q.tableStock(jTableStock);
     }
     
-    //funciones tabla clientes, sacado del codigo ya enseï¿½ado
+    //funciones tabla clientes, sacado del codigo ya ensenado
     public void updateTableClient(){ // actualizo la tabla
         while(jTableClient.getRowCount() != 0) ((DefaultTableModel)jTableClient.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
         
         q.tableClient(jTableClient);
     }
     
-    //funciones tabla proveedores, sacado del codigo ya enseï¿½ado
+    //funciones tabla proveedores, sacado del codigo ya ensenado
     public void updateTableProve(){ // actualizo la tabla
         while(jTableProve.getRowCount() != 0) ((DefaultTableModel)jTableProve.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
         
