@@ -159,9 +159,8 @@ public class Registrar extends javax.swing.JFrame {
             data.put("contraseña", encriptado);
            String correo = jTextCorreo.getText();
            if(q.registrar(correo, data, "usuarios")==true){
-                Login abrir= new Login();
-                abrir.setVisible(true);
                 this.setVisible(false);
+                
            }
              }
        } catch (Exception ex) {

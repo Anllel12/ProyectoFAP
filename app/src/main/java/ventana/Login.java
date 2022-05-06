@@ -136,7 +136,6 @@ public class Login extends javax.swing.JFrame {
     private void jRegistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegistrarseActionPerformed
         Registrar abrir= new Registrar();
         abrir.setVisible(true);
-        this.setVisible(false); 
     }//GEN-LAST:event_jRegistrarseActionPerformed
 
     private void jInicioSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jInicioSesionActionPerformed

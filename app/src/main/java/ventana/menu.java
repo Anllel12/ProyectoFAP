@@ -18,7 +18,6 @@ public class menu extends javax.swing.JFrame {
     Query q = new Query();
     AddStock addStock = new AddStock(this);
     AddClient addClient = new AddClient(this);
-    AddUser addUser = new AddUser(this);
     AddProveedores addProveedores = new AddProveedores(this);
     
     String id = ""; // Valor para guardar el id pinchado en la tabla
@@ -69,6 +68,7 @@ public class menu extends javax.swing.JFrame {
         jButtonDeleteUser = new javax.swing.JButton();
         jButtonEditUser = new javax.swing.JButton();
         jButtonAddUser = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jMenu1.setText("jMenu1");
 
@@ -336,6 +336,13 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Actualizar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -346,6 +353,8 @@ public class menu extends javax.swing.JFrame {
                 .addComponent(jButtonDeleteUser)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonEditUser)
+                .addGap(18, 18, 18)
+                .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButtonAddUser)
                 .addContainerGap())
@@ -358,7 +367,8 @@ public class menu extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonDeleteUser)
                     .addComponent(jButtonEditUser)
-                    .addComponent(jButtonAddUser))
+                    .addComponent(jButtonAddUser)
+                    .addComponent(jButton1))
                 .addGap(0, 67, Short.MAX_VALUE))
         );
 
@@ -469,7 +479,9 @@ public class menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEditUserActionPerformed
 
     private void jButtonAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddUserActionPerformed
-        addUser.setVisible(true);
+        Registrar abrir= new Registrar();
+        abrir.setVisible(true);
+        updateTableUser();
     }//GEN-LAST:event_jButtonAddUserActionPerformed
 
     private void jTableUserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUserMouseClicked
@@ -478,6 +490,11 @@ public class menu extends javax.swing.JFrame {
         col = source.columnAtPoint(evt.getPoint()); // Guardamos la columna
         id = source.getModel().getValueAt(row, 0).toString();
     }//GEN-LAST:event_jTableUserMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        updateTableUser();
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     public void updateTableStock(){ // actualizo la tabla
         while(jTableStock.getRowCount() != 0) ((DefaultTableModel)jTableStock.getModel()).removeRow(0); // Eliminamos las columnas para que no se repitan los valores ya guardados
@@ -542,6 +559,7 @@ public class menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddClient;
     private javax.swing.JButton jButtonAddProve;
     private javax.swing.JButton jButtonAddStock;
