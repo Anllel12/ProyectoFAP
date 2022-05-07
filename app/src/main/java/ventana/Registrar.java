@@ -52,8 +52,6 @@ public class Registrar extends javax.swing.JFrame {
         jRegistrar = new javax.swing.JButton();
         jTextContrasena = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Registro");
 
