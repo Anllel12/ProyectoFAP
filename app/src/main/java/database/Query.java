@@ -77,7 +77,7 @@ public class Query {
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
                 DefaultTableModel model = (DefaultTableModel) table.getModel(); // a�ade filas a la tabla automaticamente
-                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellidos"), document.getData().get("correo")}); // Pone los datos en cada columna
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellidos"), document.getData().get("correo"), document.getData().get("telefono"), document.getData().get("provincia"), document.getData().get("codigo postal"), document.getData().get("localidad"), document.getData().get("direccion")}); // Pone los datos en cada columna
             }
         }
         catch(Exception e){System.out.println("Error al poner datos en la tabla Clientes: " + e);}
@@ -122,6 +122,11 @@ public class Query {
                 case 1: stmt = docRef.update("nombre", value.toString()); break;
                 case 2: stmt = docRef.update("apellidos", value.toString()); break;
                 case 3: stmt = docRef.update("correo", value.toString()); break;
+                case 4: stmt = docRef.update("telefono", value.toString()); break;
+                case 5: stmt = docRef.update("provincia", value.toString()); break;
+                case 6: stmt = docRef.update("codigo postal", value.toString()); break;
+                case 7: stmt = docRef.update("localidad", value.toString()); break;
+                case 8: stmt = docRef.update("direccion", value.toString()); break;
             }  
             WriteResult result = stmt.get();
             System.out.println("Write result: " + result);
