@@ -43,7 +43,7 @@ public class AddProveedores extends javax.swing.JFrame {
         jTextCorreoProve = new javax.swing.JTextField();
         jButtonAceptar = new javax.swing.JButton();
 
-        setTitle("Añadir Stock");
+        setTitle("Aï¿½adir Stock");
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel1.setText("ID");

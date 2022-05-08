@@ -99,7 +99,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Inicio de sesi&#xf3;n"/>
+        <Property name="text" type="java.lang.String" value="Inicio de sesion"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
@@ -122,7 +122,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="jInicioSesion">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Inicio de sesi&#xf3;n"/>
+        <Property name="text" type="java.lang.String" value="Inicio de sesion"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jInicioSesionActionPerformed"/>

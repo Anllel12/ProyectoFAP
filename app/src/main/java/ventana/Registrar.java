@@ -1,7 +1,7 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
+* Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+* Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+*/
 package ventana;
 
 import database.Query;
@@ -21,17 +21,16 @@ import org.apache.commons.codec.digest.DigestUtils;
  * @author Pep Marto
  */
 public class Registrar extends javax.swing.JFrame {
-
-   creationDB db = new creationDB();
+    
+    creationDB db = new creationDB();
     Query q =  new Query();
     
     public Registrar() {
         initComponents();
-        db.conectar();
-      
+        db.conectar();        
     }
     
-   
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -165,7 +164,7 @@ public class Registrar extends javax.swing.JFrame {
            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
        }
     }//GEN-LAST:event_jRegistrarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -173,8 +172,8 @@ public class Registrar extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+        */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -192,7 +191,7 @@ public class Registrar extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Registrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -213,6 +212,6 @@ public class Registrar extends javax.swing.JFrame {
     private javax.swing.JTextField jTextCorreo;
     private javax.swing.JTextField jTextNombre;
     // End of variables declaration//GEN-END:variables
-
-   
+    
+    
 }
