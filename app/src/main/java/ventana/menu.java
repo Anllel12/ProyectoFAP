@@ -99,7 +99,7 @@ public class menu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableStock);
 
-        jButtonAddStock.setText("AÃ±adir");
+        jButtonAddStock.setText("Añadir");
         jButtonAddStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddStockActionPerformed(evt);
@@ -124,7 +124,7 @@ public class menu extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonDeleteStock)
@@ -155,11 +155,11 @@ public class menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nombre", "Apellido", "Correo electronico"
+                "ID", "Nombre", "Apellido", "Correo electronico", "Telefono", "Provincia", "Codigo postal", "Localidad", "Direccion"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true, true
+                false, true, true, true, true, true, true, true, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -187,7 +187,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddClient.setText("AÃ±adir");
+        jButtonAddClient.setText("Añadir");
         jButtonAddClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddClientActionPerformed(evt);
@@ -198,7 +198,7 @@ public class menu extends javax.swing.JFrame {
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonDeleteCient)
@@ -253,7 +253,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddProve.setText("AÃ±adir");
+        jButtonAddProve.setText("Añadir");
         jButtonAddProve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddProveActionPerformed(evt);
@@ -264,7 +264,7 @@ public class menu extends javax.swing.JFrame {
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+            .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonDeleteProve)
@@ -293,7 +293,7 @@ public class menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Correo", "Nombre", "Apellido", "ContraseÃ±a"
+                "Correo", "Nombre", "Apellido", "Contraseña"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -312,7 +312,7 @@ public class menu extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTableUser);
         if (jTableUser.getColumnModel().getColumnCount() > 0) {
             jTableUser.getColumnModel().getColumn(2).setHeaderValue("Apellido");
-            jTableUser.getColumnModel().getColumn(3).setHeaderValue("ContraseÃ±a");
+            jTableUser.getColumnModel().getColumn(3).setHeaderValue("Contraseña");
         }
 
         jButtonDeleteUser.setText("Eliminar");
@@ -329,7 +329,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddUser.setText("AÃ±adir");
+        jButtonAddUser.setText("Añadir");
         jButtonAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddUserActionPerformed(evt);
@@ -340,7 +340,7 @@ public class menu extends javax.swing.JFrame {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 761, Short.MAX_VALUE)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButtonDeleteUser)
@@ -368,7 +368,7 @@ public class menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

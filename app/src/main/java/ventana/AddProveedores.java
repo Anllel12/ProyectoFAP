@@ -9,6 +9,7 @@ package ventana;
 
 import java.util.HashMap;
 import java.util.Map;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -114,13 +115,17 @@ public class AddProveedores extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAceptarActionPerformed
-        Map<String, Object> data = new HashMap<>();
-        data.put("nombre", jTextNombreProve.getText());
-        data.put("apellidos", jTextTelefonoProve.getText());
-        data.put("correo", jTextCorreoProve.getText());
-        String uuid = jTextIdProve.getText();
-        m.q.insert(uuid, data, "proveedores");
-        m.updateTableClient();
+        if(jTextNombreProve.getText().isEmpty()|| jTextTelefonoProve.getText().isEmpty() || jTextCorreoProve.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null, "RELLENE LOS CAMPOS PAR PODER CONTINUAR", "ERROR", JOptionPane.WARNING_MESSAGE);
+        }else{
+            Map<String, Object> data = new HashMap<>();
+            data.put("nombre", jTextNombreProve.getText());
+            data.put("telefono", jTextTelefonoProve.getText());
+            data.put("correo", jTextCorreoProve.getText());
+            String uuid = jTextIdProve.getText();
+            m.q.insert(uuid, data, "proveedores");
+            m.updateTableProve();
+        }
     }//GEN-LAST:event_jButtonAceptarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
