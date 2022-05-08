@@ -134,7 +134,7 @@ public class Registrar extends javax.swing.JFrame {
 
     private void jRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRegistrarActionPerformed
          try {
-             if(jTextCorreo.getText().isEmpty() || jTextContrasena.getText().isEmpty() 
+             if(jTextCorreo.getText().isEmpty() || jTextContrasena.toString().isEmpty()
                      || jTextApellidos.getText().isEmpty() || jTextNombre.getText().isEmpty()
                      || !jTextCorreo.getText().contains("@")){
               JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS "
@@ -153,7 +153,7 @@ public class Registrar extends javax.swing.JFrame {
                     array[i] =(char)(array[i] +(char)5);
                 }
                 String encriptado = String.valueOf(array);
-            data.put("contraseña", encriptado);
+            data.put("contrasena", encriptado);
            String correo = jTextCorreo.getText();
            if(q.registrar(correo, data, "usuarios")==true){
                 this.setVisible(false);

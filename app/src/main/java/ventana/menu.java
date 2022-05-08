@@ -99,7 +99,7 @@ public class menu extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(jTableStock);
 
-        jButtonAddStock.setText("A�adir");
+        jButtonAddStock.setText("Añadir");
         jButtonAddStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddStockActionPerformed(evt);
@@ -187,7 +187,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddClient.setText("A�adir");
+        jButtonAddClient.setText("Añadir");
         jButtonAddClient.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddClientActionPerformed(evt);
@@ -253,7 +253,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddProve.setText("A�adir");
+        jButtonAddProve.setText("Añadir");
         jButtonAddProve.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddProveActionPerformed(evt);
@@ -293,7 +293,7 @@ public class menu extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Correo", "Nombre", "Apellido", "Contrase�a"
+                "Correo", "Nombre", "Apellido", "Contraseña"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -310,10 +310,6 @@ public class menu extends javax.swing.JFrame {
             }
         });
         jScrollPane4.setViewportView(jTableUser);
-        if (jTableUser.getColumnModel().getColumnCount() > 0) {
-            jTableUser.getColumnModel().getColumn(2).setHeaderValue("Apellido");
-            jTableUser.getColumnModel().getColumn(3).setHeaderValue("Contrase�a");
-        }
 
         jButtonDeleteUser.setText("Eliminar");
         jButtonDeleteUser.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +325,7 @@ public class menu extends javax.swing.JFrame {
             }
         });
 
-        jButtonAddUser.setText("A�adir");
+        jButtonAddUser.setText("Añadir");
         jButtonAddUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonAddUserActionPerformed(evt);
@@ -378,7 +374,7 @@ public class menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 841, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

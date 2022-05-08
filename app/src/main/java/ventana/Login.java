@@ -52,7 +52,7 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setText("Correo:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel3.setText("Contrase�a:");
+        jLabel3.setText("Contraseña:");
 
         jInicioSesion.setText("Inicio de sesion");
         jInicioSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +142,6 @@ public class Login extends javax.swing.JFrame {
         
         String correo = jTextCorreo.getText();
         String contrasena = String.valueOf(jTextContrasena.getPassword());
-        System.out.println(contrasena);
         if(jTextCorreo.getText().isEmpty() || contrasena.isEmpty()){
               JOptionPane.showMessageDialog(null, "CAMPOS VACIOS, RELLENE TODOS LOS CAMPOS NECESARIOS",
                       "ERROR", JOptionPane.WARNING_MESSAGE);

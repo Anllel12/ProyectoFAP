@@ -63,7 +63,7 @@ public class Query {
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
                 DefaultTableModel model = (DefaultTableModel) table.getModel(); // anade filas a la tabla automaticamente
-                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contrase�a").toString()}); // Pone los datos en cada columna
+                model.addRow(new Object[]{document.getReference().getId(),document.getData().get("nombre"), document.getData().get("apellido").toString(), document.getData().get("contrasena").toString()}); // Pone los datos en cada columna
             }
         }
         catch(Exception e){System.out.println("Error al poner datos en la tabla Usuarios: " + e);}
@@ -146,7 +146,7 @@ public class Query {
             switch(col){ // segun el numero de la columna hace una cosa u otra
                 case 1: stmt = docRef.update("nombre", value.toString()); break;
                 case 2: stmt = docRef.update("apellido", value.toString()); break;
-                case 3: stmt = docRef.update("contrase�a", value.toString()); break;
+                case 3: stmt = docRef.update("contrasena", value.toString()); break;
             }  
             WriteResult result = stmt.get();
             System.out.println("Write result: " + result);
@@ -187,7 +187,7 @@ public class Query {
             List<QueryDocumentSnapshot> documents = stmt.get().getDocuments();           
             for (QueryDocumentSnapshot document : documents) {
                 String email = document.getId().toString();
-                String contral = document.getData().get("contrase�a").toString();
+                String contral = document.getData().get("contrasena").toString();
                 char arrayD[]= contral.toCharArray();
                 for(int i=0; i< arrayD.length; i++)
                 arrayD[i] =(char)(arrayD[i]-(char)5);
